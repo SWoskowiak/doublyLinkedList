@@ -42,6 +42,7 @@ class DLL {
       current = current.next;
     }
 
+    // No node found matching key
     return false;
   }
 
@@ -84,9 +85,21 @@ class DLL {
     return this;
   }
 
-  // Insert a node after node matching target key
-  insert(key) {
+  // Insert a new node after matching target key
+  insert(newKey, targetKey) {
+    let current = this.getNode(targetKey);
+    if (current) {
+      let newNode = new Node(newKey);
 
+      if (current.next) { current.next.prev = newNode; }
+      if (current === this.tail) { this.tail = newNode; }
+      current.next = newNode;
+      this.size++;
+    } else {
+      return new Error(`Key: ${targetKey} not found to insert after`);
+    }
+
+    return this;
   }
 
   // Delete node by key

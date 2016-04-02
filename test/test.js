@@ -6,7 +6,6 @@ const DLL = require('../dll'),
 // Test add functionality
 describe('DLL Methods: ', () => {
 
-  // Add tests
   describe('add:', () => {
     it('Adds new node into empty list', () => {
       let list = new DLL();
@@ -43,7 +42,7 @@ describe('DLL Methods: ', () => {
       let list = new DLL();
 
       list.add('one').add('two').add('three');
-      
+
       expect(list.getNode('one')).to.be.an('object');
       expect(list.getNode('one').next.key).to.equal('two');
       expect(list.getNode('three')).to.be.an('object');
@@ -84,6 +83,37 @@ describe('DLL Methods: ', () => {
     });
   });
 
+  describe('insert:', () => {
 
-  //describe('Adds new node into existing list')
+    it('Fails when target key is not found', () => {
+      let list = new DLL();
+
+      list.add('one');
+
+      expect(list.insert('new', 'two')).to.be.an('error');
+    });
+
+    it('Inserts list node after target key', () => {
+      let list = new DLL();
+
+      list.add('one').add('two').add('three').insert('new', 'two');
+
+      expect(list.size).to.equal(4);
+      expect(list.getNode('two').next.key).to.equal('new');
+      expect(list.getNode('three').prev.key).to.equal('new');
+    });
+  });
+
+});
+
+describe('Test Case:', () => {
+  it('Adds Removes and Inserts without issue', () => {
+    let list = new DLL();
+
+    list.add('one').add('two').add('three').insert('new', 'two').remove('three').add('four');
+
+    expect(list.size).to.equal(4);
+    expect(list.tail.key).to.equal('four');
+    expect(list.tail.prev.key).to.equal('new');
+  });
 });
