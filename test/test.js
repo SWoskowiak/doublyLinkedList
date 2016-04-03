@@ -1,6 +1,6 @@
 'use strict';
 
-const DLL = require('../dll'),
+const DLL = require('../index'),
   expect = require('chai').expect;
 
 // Test add functionality
