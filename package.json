@@ -1,6 +1,6 @@
 {
   "name": "string-DLL",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple linked list storing a series of nodes containing a string key value",
   "main": "index.js",
   "repository": "https://github.com/SWoskowiak/doublyLinkedList.git",
