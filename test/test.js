@@ -81,6 +81,14 @@ describe('DLL Methods: ', () => {
       expect(list.getNode('two').next.key).to.equal('four');
       expect(list.tail.prev.key).to.equal('two');
     });
+
+    it ('Fails to remove node that does not exist', () => {
+      let list = new DLL();
+
+      list.add('one');
+
+      expect(list.remove('noexist')).to.be.an('error');
+    });
   });
 
   describe('insert:', () => {

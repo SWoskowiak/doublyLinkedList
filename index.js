@@ -101,33 +101,6 @@ class DLL {
 
     return this;
   }
-
-  // Delete node by key
-  delete(key) {
-    let current = this.head,
-      previous;
-
-    // Delete head
-    if (current.key === key) {
-      this.head = current.next;
-      // If there is only one node, then this.head is null
-      if (this.head) { this.head.prev = null; }
-    }
-
-    while (current.next) {
-      if (current.key === key) {
-        previous.next = current.next;
-        current.next.prev = previous;
-      }
-      previous = current;
-      current = current.next;
-    }
-
-    //delete last node
-    if (current.key === key) {
-      previous.next = null;
-    }
-  }
 }
 
 module.exports = DLL;
